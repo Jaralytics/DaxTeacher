@@ -1,0 +1,473 @@
+/* ---------- Pestanas / control segmentado ---------- */
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.segment {
+  padding: 0.3rem 0.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition:
+    background-color var(--dur),
+    color var(--dur);
+}
+
+.segment:hover {
+  color: var(--ink);
+}
+
+.segment[aria-selected='true'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.view-tabs {
+  margin-left: auto;
+}
+
+/* ---------- Vista Contextos ---------- */
+.contexts-main {
+  display: grid;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+.contexts {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.contexts > .segmented {
+  justify-self: start;
+  max-width: 100%;
+}
+
+.lesson {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.lesson-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+.lesson-def {
+  margin: 0;
+  max-width: 62rem;
+  color: var(--muted);
+}
+
+.lesson-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.lesson-idea {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.ctx-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.field > span {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.field select {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.field-wide {
+  flex: 1 1 18rem;
+}
+
+.chip-row,
+.slicer,
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.chip-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.chip {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.85rem;
+  transition:
+    background-color var(--dur),
+    border-color var(--dur);
+}
+
+.chip-mono {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.slicer-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.slicer-hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.ctx-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .ctx-split {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+}
+
+.card {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  min-width: 0;
+}
+
+.card-title {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.side-cards {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.matrix-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.matrix-scroll {
+  overflow-x: auto;
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.matrix th,
+.matrix td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.matrix thead th {
+  text-align: right;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.matrix th[scope='row'] {
+  text-align: left;
+  font-weight: 600;
+}
+
+.matrix .matrix-corner {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+.matrix-cell {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background-color var(--dur);
+}
+
+.matrix-cell:hover {
+  background: var(--surface-2);
+}
+
+.matrix .is-total {
+  font-weight: 700;
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+}
+
+.matrix-cell.is-selected {
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 2px var(--accent);
+  color: var(--accent);
+}
+
+.matrix-cell:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.filter-chip {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.cell-sentence {
+  margin: 0.7rem 0;
+  font-size: 0.92rem;
+}
+
+.cell-value {
+  display: grid;
+  margin: 0 0 0.7rem;
+}
+
+.ctx-captions {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.ctx-captions li {
+  margin: 0.15rem 0;
+}
+
+.ctx-tables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.ctx-tables .mini-card {
+  flex: 1 1 18rem;
+}
+
+.ctx-split > .mini-card {
+  min-width: 0;
+}
+
+.mini-card .table-scroll {
+  max-height: 22rem;
+  overflow: auto;
+}
+
+.mini-caption {
+  margin: 0;
+  padding: 0.5rem 0.9rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.is-clickable {
+  cursor: pointer;
+}
+
+.is-clickable:hover td {
+  background: var(--surface-2);
+}
+
+.extra-cell {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.row-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.row-counter {
+  margin-left: 0.6rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.calc-expr {
+  display: block;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.calc-line {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.calc-line strong {
+  color: var(--accent);
+}
+
+.calc-note {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.dots {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  transition:
+    background-color var(--dur),
+    border-color var(--dur);
+}
+
+.dot.is-lit {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.dot.is-current {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.transition-state {
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.transition-state.is-on {
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Secciones plegables ---------- */
+.collapsible-title {
+  margin-bottom: 0;
+}
+
+.collapsible-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.2rem 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: left;
+}
+
+.collapsible-btn .chevron {
+  transform: rotate(-45deg);
+}
+
+.collapsible-btn[aria-expanded='true'] .chevron {
+  transform: rotate(45deg);
+}
+
+.collapsible-btn[aria-disabled='true'] {
+  cursor: default;
+}
+
+.collapsible-text {
+  flex: 1;
+}
+
+.collapsible-meta {
+  padding: 0 0.45rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.collapsible-title + div {
+  margin-top: 0.6rem;
+}
